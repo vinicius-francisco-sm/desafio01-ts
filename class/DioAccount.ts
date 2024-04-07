@@ -1,23 +1,23 @@
 export abstract class DioAccount {
-  private readonly name: string
-  private readonly accountNumber: number
-  private balance: number = 0
-  private status: boolean = true
+  private readonly name: string;
+  private readonly accountNumber: number;
+  protected balance: number = 0;
+  private status: boolean = true;
 
   constructor(name: string, accountNumber: number){
-    this.name = name
-    this.accountNumber = accountNumber
+    this.name = name;
+    this.accountNumber = accountNumber;
   }
 
   getName = (): string => {
-    return this.name
+    return this.name;
   }
 
   deposit = (value: number): void => {
     if(this.validateStatus()){
-      this.balance += value
-      console.log('Valor depositado com sucesso')
-      console.log('Saldo atual:', this.balance)
+      this.balance += value;
+      console.log('Valor depositado com sucesso');
+      console.log('Saldo atual:', this.balance);
     }
   }
 
@@ -32,12 +32,12 @@ export abstract class DioAccount {
   }
 
   getBalance = (): void => {
-    console.log(this.balance)
+    console.log(this.balance);
   }
 
-  private validateStatus = (): boolean => {
+  protected validateStatus = (): boolean => {
     if (this.status) {
-      return this.status
+      return this.status;
     }
 
     throw new Error('Conta inválida')
@@ -48,6 +48,6 @@ export abstract class DioAccount {
       return true;
     }
 
-    throw new Error('Saldo insuficiente')
+    throw new Error('Saldo insuficiente');
   }
 }
